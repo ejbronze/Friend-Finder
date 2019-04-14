@@ -13,7 +13,7 @@ module.exports = function(app) {
     var user = req.body;
 
     // parseInt for scores
-    for (var i = 0; i < user.scores.length; i++) {
+    for(var i = 0; i < user.scores.length; i++) {
       user.scores[i] = parseInt(user.scores[i]);
     }
 
@@ -23,15 +23,15 @@ module.exports = function(app) {
 
     // in this for-loop, start off with a zero difference and compare the user and the ith friend scores, one set at a time
     //  whatever the difference is, add to the total difference
-    for (var i = 0; i < friends.length; i++) {
+    for(var i = 0; i < friends.length; i++) {
       var totalDifference = 0;
-      for (var j = 0; j < friends[i].scores.length; j++) {
+      for(var j = 0; j < friends[i].scores.length; j++) {
         var difference = Math.abs(user.scores[j] - friends[i].scores[j]);
         totalDifference += difference;
       }
 
       // if there is a new minimum, change the best friend index and set the new minimum for next iteration comparisons
-      if (totalDifference < minimumDifference) {
+      if(totalDifference < minimumDifference) {
         bestFriendIndex = i;
         minimumDifference = totalDifference;
       }
